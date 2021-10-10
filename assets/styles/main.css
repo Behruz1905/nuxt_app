@@ -1,0 +1,6 @@
+.jumbotron{
+    border-radius: 0px;
+    background-image: url("https://cdn.pixabay.com/photo/2019/11/14/19/41/baku-4626962_960_720.jpg");
+    height: 300px;
+    background-size: cover;
+}
