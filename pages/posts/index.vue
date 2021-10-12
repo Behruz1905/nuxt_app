@@ -7,6 +7,7 @@
    
     <div class="container">
         <Card v-for="post in posts" :key="post.id" :post="post"/>
+        <button class="btn btn-danger" v-scroll-to="'body'">Back to Top</button>
     </div>
     </div>
 </template>
@@ -18,20 +19,30 @@
 
 import axios from 'axios';
 import Card from '@/components/Card'
+import {mapGetters} from 'vuex'
+
 export default {
     components: {
         Card
     },
     data() {
         return {
-            posts: []
+            allPosts: []
         }
     },
-    async asyncData(){
+    computed: {
+        // allPosts() {
+        //     return this.$store.getters.posts;
+        // }
+        ...mapGetters(['posts'])
+    },
+    async fetch({ store }){
 
         let {data} =  await axios.get("https://jsonplaceholder.typicode.com/posts");
 
-        return {posts: data}
+        // return {posts: data}
+
+        store.dispatch('setPosts', data)
                
         
     },

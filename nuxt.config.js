@@ -27,8 +27,20 @@ export default {
     '@/assets/styles/main.css'
   ],
 
+  transition: {
+    name: "fade",
+    mod: "out-in"
+
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    "@/plugins/scrolto.js",
+    {
+       src:  "@/plugins/vueselect.js",
+       ssr: false
+    }
+   
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
